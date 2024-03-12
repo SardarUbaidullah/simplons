@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback - SIMPLO's Beauty Care</title>
+<link rel="shortcut icon" href="img/logo/WhatsApp Image 2024-02-23 at 9.29.07 AM.png" type="image/x-icon">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="index.js"></script>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+    }
+    .container {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+    }
+    .container:hover {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    form {
+        margin-top: 20px;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    label {
+        font-weight: bold;
+        color: #555;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+        border-color: #4caf50;
+    }
+    textarea {
+        height: 120px;
+    }
+    input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    input[type="submit"]:focus {
+        outline: none;
+    }
+    
+    /* Modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 20% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        border-radius: 8px;
+        text-align: center;
+    }
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .nav-itm{
+        text-decoration: none;
+        color: black;
+    }
+</style>
+</head>
+<body>
+    <div class="topnav">
+        <div class="toggler"><i class="fa-solid fa-bars toggle" id="show" onclick="show()"></i></div>
+        <div class="logo">
+          <a href="index.html"><img src="logo.png" alt="" class="im-2w"></a>
+        </div>
+        <div class="navlist">
+          <li><a href="index.html">Home</a> </li>
+          <li><a href="products.html" id="all-p">Products</a></li>
+          <li> <a href="About.html"> About Us</a></li>
+          <li><a href="FeedBack.html">FeedBack</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="gallery.html ">Gallery</a></li>
+          
+        </div>
+        <div class="buttons">
+          
+     </div>
+      </div>
+      <div class="toggle-nav" id="toggle-nav">
+        <div class="nav-itm">
+          <li><a href="index.html">Home</a> </li>
+          <li><a href="products.html">All Products</a></li>
+          <li><a href="Category.html">Categories</a></li>
+          <li> <a href="About.html"> About Us</a></li>
+          <li><a href="FeedBack.html">FeedBack</a></li>
+          <li><a href="contact.html">contact Us</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+           
+        </div>
+      </div>
+<div class="container">
+    <h1>Feedback Form</h1>
+    <form action="#" method="post" id="feedbackForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Thank you for your Feedback!</p>
+  </div>
+</div>
+
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("feedbackForm");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onsubmit = function(e) {
+        e.preventDefault();
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal and redirect to index.html
+    span.onclick = function() {
+        modal.style.display = "none";
+        window.location.href = "index.html";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it and redirect to index.html
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            window.location.href = "index.html";
+        }
+    }
+</script>
+
+</body>
+</html>
